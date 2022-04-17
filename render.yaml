@@ -11,7 +11,7 @@ services:
       - key: WECHATY_PUPPET
         value: wechaty-puppet-padlocal
       - key: WECHATY_PUPPET_SERVER_PORT
-        value: 8080
+        value: 443
       - key: WECHATY_LOG
         value: debug
       - key: WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_SERVER
