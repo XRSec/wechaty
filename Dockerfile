@@ -16,7 +16,7 @@ LABEL org.opencontainers.image.title="wechaty"
 #     && echo 'IyBzdGFydHVwIHJ1bgppZiBbIC1mIC9yb290L3NzaGQuc2ggXTsgdGhlbgogICAgICAvcm9vdC9zc2hkLnNoCmZp' | base64 -d >> /root/.bashrc \
 #     && chmod +x /root/sshd.sh
 
-RUN npm install -g wstunnel \
-    && sed '10 wstunnel -s 0.0.0.0:80 &' /wechaty/bin/entrypoint.sh
+RUN npm --registry https://registry.npm.taobao.org install -g wstunnel \
+    && sed -i '10 wstunnel -s 0.0.0.0:80 &' /wechaty/bin/entrypoint.sh
 
 EXPOSE 25000 80 443
