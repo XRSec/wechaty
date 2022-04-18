@@ -16,7 +16,18 @@ LABEL org.opencontainers.image.title="wechaty"
 #     && echo 'IyBzdGFydHVwIHJ1bgppZiBbIC1mIC9yb290L3NzaGQuc2ggXTsgdGhlbgogICAgICAvcm9vdC9zc2hkLnNoCmZp' | base64 -d >> /root/.bashrc \
 #     && chmod +x /root/sshd.sh
 
-RUN npm --registry https://registry.npm.taobao.org install -g wstunnel \
-    && sed -i '10 wstunnel -s 0.0.0.0:80 &' /wechaty/bin/entrypoint.sh
+# RUN apt-get -qq update \
+#     && apt-get -qq install wget unzip \
+#     && wget https://go.dev/dl/go1.18.1.linux-amd64.tar.gz \
+#     && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz \
+#     && echo 'export PATH="$PATH:/usr/local/go/bin"' >> /root/.bashrc \
+#     && wget https://github.com/chasonnchen/wechat_bot/archive/refs/heads/main.zip \
+#     && mv wechat_bot-main/ /gowechat \
+#     && rm go1.18.1.linux-amd64.tar.gz main.zip \
+#     && sed -i "s/\"127.0.0.1:30009\"/os.Getenv(\"WECHATY_PUPPET_ENDPOINT\")/g" /gowechat/main.go \
+#     && sed -i "s/\"2fdb00a5-5c31-4018-84ac-c64e5f995057\"/os.Getenv(\"WECHATY_PUPPET_TOKEN\")/g" /gowechat/main.go
 
-EXPOSE 25000 80 443
+
+EXPOSE 25000
+
+ENTRYPOINT  [ "/wechaty/bin/entrypoint.sh" ]

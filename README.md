@@ -9,3 +9,7 @@
 1. 注册账户 <https://railway.app/>
 2. 点击导入
 3. `wstunnel -t 7001:127.0.0.1:25000 wss://xxxxx.up.railway.app`
+
+```bash
+git subtree add --prefix=puppet-padlocal https://github.com/wechaty/puppet-padlocal.git main --squash
+```
